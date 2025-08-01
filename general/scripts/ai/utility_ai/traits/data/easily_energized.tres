@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=5 format=3 uid="uid://dmfvlfec1iyy4"]
+
+[ext_resource type="Script" uid="uid://dqtyl84ahjueq" path="res://general/scripts/ai/utility_ai/traits/scripts/trait_element.gd" id="1_wcvde"]
+[ext_resource type="Resource" uid="uid://cop1atou3mfei" path="res://general/scripts/ai/utility_ai/stats_ai/data/energy.tres" id="2_b8gnr"]
+[ext_resource type="Script" uid="uid://do8yyiois2de4" path="res://general/scripts/ai/utility_ai/traits/scripts/trait.gd" id="2_ps6t8"]
+
+[sub_resource type="Resource" id="Resource_ps6t8"]
+script = ExtResource("1_wcvde")
+linked_stat = ExtResource("2_b8gnr")
+scoring_positive_scale = 1.25
+scoring_negative_scale = 0.5
+impact_positive_scale = 1.0
+impact_negative_scale = 1.0
+decay_rate_base = 1.0
+metadata/_custom_type_script = "uid://dqtyl84ahjueq"
+
+[resource]
+script = ExtResource("2_ps6t8")
+display_name = "Easily Energized"
+impacts = Array[ExtResource("1_wcvde")]([SubResource("Resource_ps6t8")])
+metadata/_custom_type_script = "uid://do8yyiois2de4"

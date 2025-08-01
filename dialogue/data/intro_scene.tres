@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ConversationData" load_steps=8 format=3 uid="uid://bwnj24hdmjpvp"]
+
+[ext_resource type="Script" uid="uid://sh3c77ho3upu" path="res://dialogue/scripts/speaker_data.gd" id="1_x8tvj"]
+[ext_resource type="Script" uid="uid://clay58m41ugst" path="res://dialogue/scripts/conversation_data.gd" id="2_xdcu2"]
+[ext_resource type="Texture2D" uid="uid://bwwkvxc51jqbr" path="res://tactics/sprites/EvilAvatar.png" id="2_xglqp"]
+[ext_resource type="Texture2D" uid="uid://ks23y6y3qxcn" path="res://tactics/sprites/Avatar.png" id="3_i2nif"]
+
+[sub_resource type="Resource" id="Resource_xglqp"]
+script = ExtResource("1_x8tvj")
+speaker = ExtResource("2_xglqp")
+anchor = 1
+messages = Array[String](["VILLAIN_1A", "VILLAIN_1B", "VILLAIN_1C"])
+metadata/_custom_type_script = "uid://sh3c77ho3upu"
+
+[sub_resource type="Resource" id="Resource_i2nif"]
+script = ExtResource("1_x8tvj")
+speaker = ExtResource("3_i2nif")
+anchor = 2
+messages = Array[String](["HERO_1A", "HERO_1B"])
+metadata/_custom_type_script = "uid://sh3c77ho3upu"
+
+[sub_resource type="Resource" id="Resource_pa021"]
+script = ExtResource("1_x8tvj")
+speaker = ExtResource("2_xglqp")
+anchor = 1
+messages = Array[String](["VILLAIN_2A"])
+metadata/_custom_type_script = "uid://sh3c77ho3upu"
+
+[resource]
+script = ExtResource("2_xdcu2")
+list = Array[ExtResource("1_x8tvj")]([SubResource("Resource_xglqp"), SubResource("Resource_i2nif"), SubResource("Resource_pa021")])
+metadata/_custom_type_script = "uid://clay58m41ugst"

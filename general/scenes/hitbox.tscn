@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://pki1ccela03k"]
+
+[ext_resource type="Script" uid="uid://x3yf80jj4x3e" path="res://general/scripts/hitbox/hitbox.gd" id="1_5y7jk"]
+
+[node name="Hitbox" type="Area2D"]
+collision_layer = 1024
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_5y7jk")

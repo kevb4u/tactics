@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AIStat" load_steps=2 format=3 uid="uid://dywe1hsmhw3xt"]
+
+[ext_resource type="Script" uid="uid://dnqs6k5jp3qw3" path="res://general/scripts/ai/utility_ai/stats_ai/scripts/ai_stat.gd" id="1_rk5i6"]
+
+[resource]
+script = ExtResource("1_rk5i6")
+display_name = "Hunger"
+priority = 2
+is_visible = true
+initial_value = 0.5
+decay_rate = 0.3
+metadata/_custom_type_script = "uid://dnqs6k5jp3qw3"

@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqnt014rpjpyu"]
+
+[ext_resource type="Script" uid="uid://b0fb3dvwjd8u4" path="res://world/3d/level_3d.gd" id="1_hyfat"]
+[ext_resource type="MeshLibrary" uid="uid://wrlaaaivu5hd" path="res://world/3d/grid_map/kitkat_blocks.tres" id="2_yg7tn"]
+[ext_resource type="Script" uid="uid://bhicbfua1uh8f" path="res://world/3d/iso_grid_map.gd" id="3_v2wxt"]
+[ext_resource type="Texture2D" uid="uid://cr51673g70ore" path="res://tactics/sprites/MoreConversationArrow.png" id="4_yg7tn"]
+[ext_resource type="Script" uid="uid://bcbq7pkgemnw" path="res://tactics/scripts/facing_indicator.gd" id="5_kojqn"]
+[ext_resource type="Texture2D" uid="uid://d1vnhjya1ljcv" path="res://tactics/sprites/MenuBulletLocked.png" id="5_yg7tn"]
+[ext_resource type="Texture2D" uid="uid://djcnhoycm8qkn" path="res://tactics/sprites/MenuBulletSelected.png" id="7_lwflx"]
+
+[sub_resource type="Environment" id="Environment_1c2mv"]
+
+[node name="Level3D" type="Node3D"]
+script = ExtResource("1_hyfat")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1c2mv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989185, -0.0786611, 0.123792, 0, 0.844019, 0.536313, -0.14667, -0.530513, 0.834891, 0, 3.13492, -0.0367086)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, -0.5)
+mesh_library = ExtResource("2_yg7tn")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 16
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(0, 65535, 0, 0, 0, 0, 65535, 1, 0, 0, 1, 0, 65535, 0, 0, 65535, 65535, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 65535, 65534, 13)
+}
+script = ExtResource("3_v2wxt")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Marker" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Marker"]
+offset = Vector2(0, 11)
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_yg7tn")
+
+[node name="South" type="Sprite3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 1)
+visible = false
+offset = Vector2(0, 11)
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_yg7tn")
+
+[node name="East" type="Sprite3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.25, 0)
+visible = false
+offset = Vector2(0, 11)
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_yg7tn")
+
+[node name="North" type="Sprite3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -1)
+visible = false
+offset = Vector2(0, 11)
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_yg7tn")
+
+[node name="West" type="Sprite3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 0)
+visible = false
+offset = Vector2(0, 11)
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_yg7tn")
+
+[node name="FacingIndicator" type="Node" parent="Marker" node_paths=PackedStringArray("directions")]
+script = ExtResource("5_kojqn")
+enable_texture = ExtResource("7_lwflx")
+disable_texture = ExtResource("5_yg7tn")
+directions = [NodePath("../South"), NodePath("../East"), NodePath("../North"), NodePath("../West")]
+metadata/_custom_type_script = "uid://bcbq7pkgemnw"

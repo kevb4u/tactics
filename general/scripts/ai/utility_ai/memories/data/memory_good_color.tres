@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MemoryFragment" load_steps=5 format=3 uid="uid://behjfa11iqh8v"]
+
+[ext_resource type="Script" uid="uid://d0uc7beiqgvsf" path="res://systems/utility_ai/memories/scripts/memory_fragment.gd" id="1_lcgtg"]
+[ext_resource type="Script" uid="uid://dop2jhjg3ioko" path="res://systems/utility_ai/smart_objects/scripts/interaction_stat_change.gd" id="2_elln5"]
+[ext_resource type="Resource" uid="uid://dywe1hsmhw3xt" path="res://systems/utility_ai/stats_ai/data/hunger.tres" id="4_aagtt"]
+
+[sub_resource type="Resource" id="Resource_cc0ng"]
+script = ExtResource("2_elln5")
+linked_stat = ExtResource("4_aagtt")
+value = 1.2
+metadata/_custom_type_script = "uid://dop2jhjg3ioko"
+
+[resource]
+script = ExtResource("1_lcgtg")
+name = "Good Color"
+description = "Saw Good Color"
+duration = 60.0
+stat_changes = Array[ExtResource("2_elln5")]([SubResource("Resource_cc0ng")])
+memories_contered = Array[ExtResource("1_lcgtg")]([])
+metadata/_custom_type_script = "uid://d0uc7beiqgvsf"

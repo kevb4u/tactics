@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxo4gpmrwmls3"]
+
+[ext_resource type="Script" uid="uid://c1hibidgm6o2m" path="res://tactics/scripts/controller/unit_turn_panel.gd" id="1_pvkrl"]
+
+[node name="UnitTurnPanel" type="Panel"]
+custom_minimum_size = Vector2(40, 20)
+offset_right = 90.0
+offset_bottom = 20.0
+script = ExtResource("1_pvkrl")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "1000"

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfwaspqyijbke"]
+
+[ext_resource type="Script" uid="uid://clh6s4wmbt6cj" path="res://general/scripts/pool/poolable.gd" id="1_yv1g0"]
+[ext_resource type="Script" uid="uid://bmn5wtm7ujvgt" path="res://tactics/scripts/ability/ability_menu_entry.gd" id="2_i6xkx"]
+[ext_resource type="Texture2D" uid="uid://602w51l5s41i" path="res://tactics/sprites/MenuBullet.png" id="3_uyv0m"]
+[ext_resource type="Texture2D" uid="uid://djcnhoycm8qkn" path="res://tactics/sprites/MenuBulletSelected.png" id="4_uyv0m"]
+[ext_resource type="Texture2D" uid="uid://d1vnhjya1ljcv" path="res://tactics/sprites/MenuBulletLocked.png" id="5_mwmgu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yflsl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghyxc"]
+
+[node name="AbilityMenuEntry" type="PanelContainer"]
+offset_right = 121.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yflsl")
+script = ExtResource("1_yv1g0")
+
+[node name="Entry" type="PanelContainer" parent="." node_paths=PackedStringArray("bullet", "label")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ghyxc")
+script = ExtResource("2_i6xkx")
+bullet = NodePath("HBox/BulletRect")
+label = NodePath("HBox/EntryButton/EntryLabel")
+normal_sprite = ExtResource("3_uyv0m")
+selected_sprite = ExtResource("4_uyv0m")
+disabled_sprite = ExtResource("5_mwmgu")
+
+[node name="HBox" type="HBoxContainer" parent="Entry"]
+layout_mode = 2
+
+[node name="BulletRect" type="TextureRect" parent="Entry/HBox"]
+layout_mode = 2
+texture = ExtResource("3_uyv0m")
+expand_mode = 3
+
+[node name="EntryButton" type="Button" parent="Entry/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EntryLabel" type="Label" parent="Entry/HBox/EntryButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.298039, 0.298039, 0.298039, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 14
+text = "Ability Entry"
+horizontal_alignment = 1
+vertical_alignment = 1

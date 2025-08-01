@@ -1,0 +1,956 @@
+[gd_scene load_steps=78 format=3 uid="uid://drm12nyo4alpl"]
+
+[ext_resource type="Script" uid="uid://ymkgyx8syd1h" path="res://general/autoload/scripts/game_controller.gd" id="1_4lp66"]
+[ext_resource type="Script" uid="uid://c1jx6vcxoas5a" path="res://general/autoload/scripts/camera_controller_3d.gd" id="2_3pg5f"]
+[ext_resource type="Script" uid="uid://ditp1oyhgekq8" path="res://general/autoload/scripts/camera_controller.gd" id="2_bxhwd"]
+[ext_resource type="Script" uid="uid://nxvh07du28fp" path="res://general/autoload/scripts/input_controller.gd" id="3_c2ih8"]
+[ext_resource type="Script" uid="uid://bs8axdh5egoup" path="res://general/autoload/scenes/day_night_cycle.gd" id="4_jfo1g"]
+[ext_resource type="Script" uid="uid://b5r5ub8gw4md2" path="res://tactics/scripts/controller/battle_controller.gd" id="4_nkjdf"]
+[ext_resource type="Script" uid="uid://c3gdgii0jwx1e" path="res://general/autoload/scripts/game_object_pool_controller.gd" id="4_ri7ru"]
+[ext_resource type="Script" uid="uid://vaedtf4hy31r" path="res://dialogue/scripts/conversation_controller.gd" id="5_peuxc"]
+[ext_resource type="PackedScene" uid="uid://xnpa5jbxrgsb" path="res://objects/entity/scenes/entity.tscn" id="5_qvjbm"]
+[ext_resource type="Script" uid="uid://bh10l38eo8hww" path="res://general/scripts/state_machine/state_machine.gd" id="6_mi322"]
+[ext_resource type="Script" uid="uid://6ixejnh7fp3e" path="res://general/scripts/ui/conversation_panel.gd" id="6_s27iw"]
+[ext_resource type="Script" uid="uid://m4lxd0vp76to" path="res://general/scripts/ui/panel_anchor.gd" id="7_lhmx0"]
+[ext_resource type="Script" uid="uid://d2jph83ucl8k4" path="res://tactics/scripts/states/init_battle_state.gd" id="7_ui6mj"]
+[ext_resource type="Texture2D" uid="uid://wgeyhy8q52gk" path="res://dialogue/sprites/text-bubble.png" id="8_13xor"]
+[ext_resource type="Script" uid="uid://8oj0eh6w8i8" path="res://tactics/scripts/states/move_target_battle_state.gd" id="8_phnv0"]
+[ext_resource type="Script" uid="uid://dle6yybvlyyqs" path="res://tactics/scripts/states/select_unit_battle_state.gd" id="9_p86ga"]
+[ext_resource type="Texture2D" uid="uid://ks23y6y3qxcn" path="res://tactics/sprites/Avatar.png" id="9_wd5du"]
+[ext_resource type="Script" uid="uid://lxvsjv5yec7s" path="res://tactics/scripts/states/move_sequence_battle_state.gd" id="10_ngfc7"]
+[ext_resource type="Texture2D" uid="uid://cr51673g70ore" path="res://tactics/sprites/MoreConversationArrow.png" id="10_tv5jy"]
+[ext_resource type="Script" uid="uid://pfiekmig6rbt" path="res://general/autoload/scenes/day_night_cycle_ui.gd" id="11_mu62v"]
+[ext_resource type="Script" uid="uid://crgh4mxres1w3" path="res://tactics/scripts/states/cut_scene_state.gd" id="11_xuk5g"]
+[ext_resource type="Script" uid="uid://gln0wf8alcwg" path="res://tactics/scripts/states/action_selection_battle_state.gd" id="12_3pg5f"]
+[ext_resource type="Script" uid="uid://2411gr4vpw7d" path="res://tactics/scripts/states/command_selection_battle_state.gd" id="13_bun4t"]
+[ext_resource type="PackedScene" uid="uid://dc31ehk2tr85o" path="res://objects/entity/scenes/entity_3d.tscn" id="14_eevnt"]
+[ext_resource type="Script" uid="uid://dtq28ot42ucmh" path="res://tactics/scripts/states/category_selection_battle_state.gd" id="14_mxuun"]
+[ext_resource type="Script" uid="uid://cbud8g75bnok6" path="res://tactics/scripts/states/explore_battle_state.gd" id="15_eevnt"]
+[ext_resource type="Script" uid="uid://qm1x6dmcxmo8" path="res://tactics/scripts/states/ability_target_battle_state.gd" id="15_ui6mj"]
+[ext_resource type="Script" uid="uid://jpop2b688thv" path="res://tactics/scripts/controller/ability_menu_panel_controller.gd" id="16_k6hj6"]
+[ext_resource type="Script" uid="uid://ls8jc4qpsbkw" path="res://tactics/scripts/states/confirm_ability_target_battle_state.gd" id="16_ngfc7"]
+[ext_resource type="PackedScene" uid="uid://bfwaspqyijbke" path="res://tactics/scenes/ability_menu_entry.tscn" id="17_mnl28"]
+[ext_resource type="Script" uid="uid://daeixfi28v28d" path="res://tactics/scripts/states/perform_ability_target_battle_state.gd" id="17_xuk5g"]
+[ext_resource type="Script" uid="uid://gt2n30mlmx5e" path="res://tactics/scripts/states/end_facing_battle_state.gd" id="18_3pg5f"]
+[ext_resource type="Texture2D" uid="uid://ddtt7kwrr7bm8" path="res://tactics/sprites/AbilityMenu.png" id="18_yrcro"]
+[ext_resource type="Script" uid="uid://o2rxrrmgn8f1" path="res://tactics/scripts/ability/ability_menu_panel.gd" id="19_i4323"]
+[ext_resource type="Script" uid="uid://bgirtj8s00052" path="res://tactics/scripts/stats/stat_panel.gd" id="20_nkjdf"]
+[ext_resource type="Script" uid="uid://dc4u3qlnq83a4" path="res://tactics/scripts/stats/stat_panel_controller.gd" id="20_qvjbm"]
+[ext_resource type="Texture2D" uid="uid://ccjwwvgrj885b" path="res://tactics/sprites/BlueAttackPanel.png" id="20_vawj3"]
+[ext_resource type="Script" uid="uid://clay58m41ugst" path="res://dialogue/scripts/conversation_data.gd" id="22_rr8id"]
+[ext_resource type="Resource" uid="uid://bwnj24hdmjpvp" path="res://dialogue/data/intro_scene.tres" id="23_e5as1"]
+[ext_resource type="Texture2D" uid="uid://8ra30oa5qjf1" path="res://tactics/sprites/RedAttackPanel.png" id="23_mi322"]
+[ext_resource type="Resource" uid="uid://qxh0pfnhbxi3" path="res://dialogue/data/outro_scene_lose.tres" id="24_eq8yx"]
+[ext_resource type="Resource" uid="uid://c61obors7vu2e" path="res://dialogue/data/outro_scene_win.tres" id="25_wnhmo"]
+[ext_resource type="Script" uid="uid://c417rudhgsecj" path="res://tactics/scripts/controller/turn_order_controller.gd" id="29_xuk5g"]
+[ext_resource type="Script" uid="uid://ba4ucdgvd5a8c" path="res://tactics/scripts/states/end_battle_state.gd" id="32_xeypr"]
+[ext_resource type="Script" uid="uid://hbbuba727p1k" path="res://tactics/scripts/controller/hit_success_indicator.gd" id="37_mxuun"]
+[ext_resource type="Texture2D" uid="uid://balpyxtwaftkd" path="res://tactics/sprites/AttackArrowFill.png" id="38_k6hj6"]
+[ext_resource type="Script" uid="uid://dw8mq4ewtnt2c" path="res://general/scripts/ui/layout_anchor.gd" id="39_mnl28"]
+[ext_resource type="Script" uid="uid://bbvh40ncxgu1u" path="res://general/autoload/scripts/event_bus.gd" id="41_mnl28"]
+[ext_resource type="Script" uid="uid://cnnedhwdrxclw" path="res://tactics/scripts/controller/turn_order_panel.gd" id="42_yrcro"]
+[ext_resource type="Script" uid="uid://b2tl4xqyjcmi0" path="res://tactics/scripts/controller/auto_status_controller.gd" id="45_e5as1"]
+[ext_resource type="Script" uid="uid://cbshvgv8pkbv2" path="res://tactics/scripts/controller/battle_message_controller.gd" id="48_ggyex"]
+[ext_resource type="Script" uid="uid://dhkee25g4xwlv" path="res://tactics/scripts/ai/computer_player.gd" id="49_wnhmo"]
+
+[sub_resource type="Gradient" id="Gradient_jfo1g"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.472693, 0.504708, 0.527352, 0.549234, 0.570022, 1)
+colors = PackedColorArray(0.210064, 0.136899, 0.538933, 1, 0.211765, 0.137255, 0.537255, 1, 0.541237, 0.33857, 0.495681, 1, 0.995617, 0.618819, 0.622379, 1, 0.999984, 0.879259, 0.880104, 1, 1, 0.99629, 0.996374, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mu62v"]
+gradient = SubResource("Gradient_jfo1g")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kxwfe"]
+
+[sub_resource type="Resource" id="Resource_ws6ob"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide Bottom"
+my_anchor = 2
+parent_anchor = 3
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_bg2qj"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide Top"
+my_anchor = 0
+parent_anchor = 1
+offset = Vector2(0, 10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_kq6bj"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show Bottom"
+my_anchor = 3
+parent_anchor = 3
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_tduwi"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show Top"
+my_anchor = 1
+parent_anchor = 1
+offset = Vector2(0, 10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_k6lo0"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide Bottom"
+my_anchor = 3
+parent_anchor = 2
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_yflsl"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide Top"
+my_anchor = 1
+parent_anchor = 0
+offset = Vector2(0, 10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_ghyxc"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show Bottom"
+my_anchor = 2
+parent_anchor = 2
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_6atju"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show Top"
+my_anchor = 0
+parent_anchor = 0
+offset = Vector2(0, 10)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tduwi"]
+content_margin_left = 6.0
+content_margin_top = 8.0
+texture = ExtResource("18_yrcro")
+texture_margin_left = 44.0
+texture_margin_top = 42.0
+texture_margin_right = 1.0
+texture_margin_bottom = 32.0
+expand_margin_left = 6.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Resource" id="Resource_ucc8j"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide"
+my_anchor = 2
+parent_anchor = 3
+offset = Vector2(0, -5)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_6kuq6"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show"
+my_anchor = 3
+parent_anchor = 3
+offset = Vector2(0, -5)
+duration = 0.5
+trans = 0
+anchor_ease = 2
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vawj3"]
+
+[sub_resource type="Resource" id="Resource_qvjbm"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide"
+my_anchor = 3
+parent_anchor = 2
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 4
+anchor_ease = 1
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_mi322"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show"
+my_anchor = 2
+parent_anchor = 3
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 4
+anchor_ease = 1
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvjbm"]
+font_size = 9
+outline_size = 3
+outline_color = Color(0, 0, 0, 0.498039)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkjdf"]
+
+[sub_resource type="Resource" id="Resource_ui6mj"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide"
+my_anchor = 2
+parent_anchor = 3
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 4
+anchor_ease = 1
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_phnv0"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show"
+my_anchor = 3
+parent_anchor = 3
+offset = Vector2(0, -10)
+duration = 0.5
+trans = 4
+anchor_ease = 1
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6hj6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrcro"]
+
+[sub_resource type="Resource" id="Resource_yrcro"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Hide"
+my_anchor = 0
+parent_anchor = 0
+offset = Vector2(-60, 0)
+duration = 0.5
+trans = 3
+anchor_ease = 1
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[sub_resource type="Resource" id="Resource_i4323"]
+script = ExtResource("7_lhmx0")
+anchor_name = "Show"
+my_anchor = 0
+parent_anchor = 0
+offset = Vector2(0, 0)
+duration = 0.5
+trans = 3
+anchor_ease = 1
+metadata/_custom_type_script = "uid://m4lxd0vp76to"
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_4lp66")
+
+[node name="World3D" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CameraController3D" type="Node3D" parent="World3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+script = ExtResource("2_3pg5f")
+
+[node name="Han" type="Node3D" parent="World3D/CameraController3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 31)
+
+[node name="Pitch" type="Node3D" parent="World3D/CameraController3D/Han"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="World3D/CameraController3D/Han/Pitch"]
+projection = 1
+size = 8.0
+far = 1000.0
+
+[node name="World2D" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="DayNightCycle" type="CanvasModulate" parent="World2D"]
+unique_name_in_owner = true
+color = Color(0.172831, 0.0926297, 0.484555, 1)
+script = ExtResource("4_jfo1g")
+gradient = SubResource("GradientTexture1D_mu62v")
+
+[node name="CameraController" type="Node2D" parent="World2D"]
+unique_name_in_owner = true
+script = ExtResource("2_bxhwd")
+
+[node name="Camera2D" type="Camera2D" parent="World2D/CameraController"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="SceneButton" type="Button" parent="GUI"]
+unique_name_in_owner = true
+offset_left = 286.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 35.0
+text = "2d"
+
+[node name="ConversationController" type="CanvasLayer" parent="GUI" node_paths=PackedStringArray("left_panel", "right_panel")]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("5_peuxc")
+left_panel = NodePath("LeftConversationPanel")
+right_panel = NodePath("RightConversationPanel")
+
+[node name="RightConversationPanel" type="Panel" parent="GUI/ConversationController" node_paths=PackedStringArray("message", "speaker", "arrow")]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -258.0
+offset_bottom = 82.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kxwfe")
+script = ExtResource("6_s27iw")
+message = NodePath("Message")
+speaker = NodePath("Speaker")
+arrow = NodePath("RightMoreArrow")
+anchor_list = Array[ExtResource("7_lhmx0")]([SubResource("Resource_ws6ob"), SubResource("Resource_bg2qj"), SubResource("Resource_kq6bj"), SubResource("Resource_tduwi")])
+metadata/_custom_type_script = "uid://6ixejnh7fp3e"
+
+[node name="Background" type="NinePatchRect" parent="GUI/ConversationController/RightConversationPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -56.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_13xor")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Speaker" type="TextureRect" parent="GUI/ConversationController/RightConversationPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -82.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_wd5du")
+expand_mode = 1
+
+[node name="Message" type="RichTextLabel" parent="GUI/ConversationController/RightConversationPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -52.0
+offset_right = -58.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.407843, 0.172549, 0.0823529, 1)
+bbcode_enabled = true
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightMoreArrow" type="TextureRect" parent="GUI/ConversationController/RightConversationPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -12.0
+offset_right = -117.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_tv5jy")
+
+[node name="LeftConversationPanel" type="Panel" parent="GUI/ConversationController" node_paths=PackedStringArray("message", "speaker", "arrow")]
+visible = false
+offset_right = 260.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kxwfe")
+script = ExtResource("6_s27iw")
+message = NodePath("Message")
+speaker = NodePath("Speaker")
+arrow = NodePath("LeftMoreArrow")
+anchor_list = Array[ExtResource("7_lhmx0")]([SubResource("Resource_k6lo0"), SubResource("Resource_yflsl"), SubResource("Resource_ghyxc"), SubResource("Resource_6atju")])
+metadata/_custom_type_script = "uid://6ixejnh7fp3e"
+
+[node name="Background" type="NinePatchRect" parent="GUI/ConversationController/LeftConversationPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_right = 257.0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(129, 0)
+texture = ExtResource("8_13xor")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Speaker" type="TextureRect" parent="GUI/ConversationController/LeftConversationPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+offset_right = 56.0
+offset_bottom = 1.0
+grow_vertical = 0
+texture = ExtResource("9_wd5du")
+expand_mode = 1
+flip_h = true
+
+[node name="Message" type="RichTextLabel" parent="GUI/ConversationController/LeftConversationPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -52.0
+offset_right = 252.0
+offset_bottom = -4.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.407843, 0.172549, 0.0823529, 1)
+bbcode_enabled = true
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftMoreArrow" type="TextureRect" parent="GUI/ConversationController/LeftConversationPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 130.0
+offset_top = -10.0
+offset_right = 163.0
+offset_bottom = 14.0
+grow_vertical = 0
+texture = ExtResource("10_tv5jy")
+
+[node name="DayNightCycleUI" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_mu62v")
+
+[node name="TimeLabel" type="Label" parent="GUI/DayNightCycleUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "12:59 PM"
+
+[node name="OtherController" type="Node" parent="."]
+
+[node name="InputController" type="Node" parent="OtherController"]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("3_c2ih8")
+
+[node name="PoolController" type="Node" parent="OtherController"]
+unique_name_in_owner = true
+script = ExtResource("4_ri7ru")
+
+[node name="EventBus" type="Node" parent="OtherController"]
+unique_name_in_owner = true
+script = ExtResource("41_mnl28")
+
+[node name="BattleController" type="Node" parent="OtherController" node_paths=PackedStringArray("state_machine", "start_state", "stat_panel_controller", "turn_order_controller", "hit_success_indicator", "auto_status_controller", "cpu", "battle_message_contoller", "ability_menu_panel_controller")]
+unique_name_in_owner = true
+script = ExtResource("4_nkjdf")
+state_machine = NodePath("StateMachine")
+start_state = NodePath("StateMachine/InitBattleState")
+entity_prefrab = ExtResource("5_qvjbm")
+entity_3d_prefrab = ExtResource("14_eevnt")
+stat_panel_controller = NodePath("StatPanelController")
+turn_order_controller = NodePath("TurnOrderController")
+hit_success_indicator = NodePath("HitSuccessIndicator")
+auto_status_controller = NodePath("AutoStatusController")
+cpu = NodePath("ComputerPlayer")
+battle_message_contoller = NodePath("BattleMessageController")
+ability_menu_panel_controller = NodePath("AbilityMenuPanelController")
+
+[node name="StateMachine" type="Node" parent="OtherController/BattleController"]
+script = ExtResource("6_mi322")
+
+[node name="InitBattleState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("cutSceneState")]
+script = ExtResource("7_ui6mj")
+cutSceneState = NodePath("../CutSceneState")
+
+[node name="MoveTargetState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("MoveSequenceState", "commandSelectionState")]
+script = ExtResource("8_phnv0")
+MoveSequenceState = NodePath("../MoveSequenceState")
+commandSelectionState = NodePath("../CommandSelectionState")
+
+[node name="SelectUnitState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("commandSelectionState")]
+script = ExtResource("9_p86ga")
+commandSelectionState = NodePath("../CommandSelectionState")
+
+[node name="MoveSequenceState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("commandSelectionState", "endFacingState")]
+script = ExtResource("10_ngfc7")
+commandSelectionState = NodePath("../CommandSelectionState")
+endFacingState = NodePath("../EndFacingState")
+
+[node name="CutSceneState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("endBattleState", "selectUnitState")]
+script = ExtResource("11_xuk5g")
+endBattleState = NodePath("../EndBattleState")
+selectUnitState = NodePath("../SelectUnitState")
+data = Array[ExtResource("22_rr8id")]([ExtResource("23_e5as1"), ExtResource("24_eq8yx"), ExtResource("25_wnhmo")])
+
+[node name="ActionSelectionState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("abilityTargetState", "categorySelectionState")]
+script = ExtResource("12_3pg5f")
+abilityTargetState = NodePath("../AbilityTargetState")
+categorySelectionState = NodePath("../CategorySelectionState")
+
+[node name="CommandSelectionState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("moveTargetState", "categorySelectionState", "selectUnitState", "abilityTargetState", "exploreState", "endFacingState")]
+script = ExtResource("13_bun4t")
+moveTargetState = NodePath("../MoveTargetState")
+categorySelectionState = NodePath("../CategorySelectionState")
+selectUnitState = NodePath("../SelectUnitState")
+abilityTargetState = NodePath("../AbilityTargetState")
+exploreState = NodePath("../ExploreState")
+endFacingState = NodePath("../EndFacingState")
+
+[node name="CategorySelectionState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("commandSelectionState", "actionSelectionState", "abilityTargetState")]
+script = ExtResource("14_mxuun")
+commandSelectionState = NodePath("../CommandSelectionState")
+actionSelectionState = NodePath("../ActionSelectionState")
+abilityTargetState = NodePath("../AbilityTargetState")
+
+[node name="ExploreState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("commandSelectionState")]
+script = ExtResource("15_eevnt")
+commandSelectionState = NodePath("../CommandSelectionState")
+
+[node name="AbilityTargetState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("confirmAbilityTargetState", "categorySelectionState")]
+script = ExtResource("15_ui6mj")
+confirmAbilityTargetState = NodePath("../ConfirmAbilityTargetState")
+categorySelectionState = NodePath("../CategorySelectionState")
+
+[node name="ConfirmAbilityTargetState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("performAbilityState", "abilityTargetState")]
+script = ExtResource("16_ngfc7")
+performAbilityState = NodePath("../PerformAbilityState")
+abilityTargetState = NodePath("../AbilityTargetState")
+
+[node name="PerformAbilityState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("cutSceneState", "selectUnitState", "endFacingState", "commandSelectionState")]
+script = ExtResource("17_xuk5g")
+cutSceneState = NodePath("../CutSceneState")
+selectUnitState = NodePath("../SelectUnitState")
+endFacingState = NodePath("../EndFacingState")
+commandSelectionState = NodePath("../CommandSelectionState")
+
+[node name="EndFacingState" type="Node" parent="OtherController/BattleController/StateMachine" node_paths=PackedStringArray("selectUnitState", "commandSelectionState")]
+script = ExtResource("18_3pg5f")
+selectUnitState = NodePath("../SelectUnitState")
+commandSelectionState = NodePath("../CommandSelectionState")
+
+[node name="EndBattleState" type="Node" parent="OtherController/BattleController/StateMachine"]
+script = ExtResource("32_xeypr")
+
+[node name="AbilityMenuPanelController" type="CanvasLayer" parent="OtherController/BattleController" node_paths=PackedStringArray("title_label", "panel", "entry_vbox")]
+script = ExtResource("16_k6hj6")
+entry_prefab = ExtResource("17_mnl28")
+title_label = NodePath("AbilityMenuPanel/PanelVBox/TitleMargin/TitleText")
+panel = NodePath("AbilityMenuPanel")
+entry_vbox = NodePath("AbilityMenuPanel/PanelVBox/EntryVBox")
+
+[node name="AbilityMenuPanel" type="PanelContainer" parent="OtherController/BattleController/AbilityMenuPanelController"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -101.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tduwi")
+script = ExtResource("19_i4323")
+anchor_list = Array[ExtResource("7_lhmx0")]([SubResource("Resource_ucc8j"), SubResource("Resource_6kuq6")])
+
+[node name="PanelVBox" type="VBoxContainer" parent="OtherController/BattleController/AbilityMenuPanelController/AbilityMenuPanel"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="TitleMargin" type="MarginContainer" parent="OtherController/BattleController/AbilityMenuPanelController/AbilityMenuPanel/PanelVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_bottom = 6
+
+[node name="TitleText" type="Label" parent="OtherController/BattleController/AbilityMenuPanelController/AbilityMenuPanel/PanelVBox/TitleMargin"]
+layout_mode = 2
+text = "Menu Title"
+horizontal_alignment = 1
+
+[node name="EntryVBox" type="VBoxContainer" parent="OtherController/BattleController/AbilityMenuPanelController/AbilityMenuPanel/PanelVBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="StatPanelController" type="CanvasLayer" parent="OtherController/BattleController" node_paths=PackedStringArray("primary_panel", "secondary_panel")]
+script = ExtResource("20_qvjbm")
+primary_panel = NodePath("PrimaryStatPanel")
+secondary_panel = NodePath("SecondaryStatPanel")
+
+[node name="PrimaryStatPanel" type="Panel" parent="OtherController/BattleController/StatPanelController" node_paths=PackedStringArray("background", "avatar", "name_label", "hp_label", "mp_label", "lvl_label")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 120.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vawj3")
+script = ExtResource("20_nkjdf")
+ally_background = ExtResource("20_vawj3")
+enemy_background = ExtResource("23_mi322")
+background = NodePath("BackgroundFrame")
+avatar = NodePath("Avatar")
+name_label = NodePath("NameLabel")
+hp_label = NodePath("HPLabel")
+mp_label = NodePath("MPLabel")
+lvl_label = NodePath("LevelLabel")
+anchor_list = Array[ExtResource("7_lhmx0")]([SubResource("Resource_qvjbm"), SubResource("Resource_mi322")])
+
+[node name="BackgroundFrame" type="NinePatchRect" parent="OtherController/BattleController/StatPanelController/PrimaryStatPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 120.0
+grow_vertical = 0
+texture = ExtResource("20_vawj3")
+region_rect = Rect2(0, 0, 50, 116)
+patch_margin_left = 3
+patch_margin_right = 47
+
+[node name="Avatar" type="TextureRect" parent="OtherController/BattleController/StatPanelController/PrimaryStatPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+offset_right = 56.0
+grow_vertical = 0
+texture = ExtResource("9_wd5du")
+expand_mode = 5
+flip_h = true
+
+[node name="NameLabel" type="Label" parent="OtherController/BattleController/StatPanelController/PrimaryStatPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 104.0
+offset_bottom = -33.0
+grow_vertical = 0
+text = "Name"
+label_settings = SubResource("LabelSettings_qvjbm")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="OtherController/BattleController/StatPanelController/PrimaryStatPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+offset_right = 97.0
+offset_bottom = -17.0
+grow_vertical = 0
+text = "HP: 888/888"
+label_settings = SubResource("LabelSettings_qvjbm")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MPLabel" type="Label" parent="OtherController/BattleController/StatPanelController/PrimaryStatPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_right = 90.0
+grow_vertical = 0
+text = "HP: 888/888"
+label_settings = SubResource("LabelSettings_qvjbm")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="OtherController/BattleController/StatPanelController/PrimaryStatPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -17.0
+offset_right = 45.0
+grow_vertical = 0
+text = "LVL: 99"
+label_settings = SubResource("LabelSettings_qvjbm")
+vertical_alignment = 1
+
+[node name="SecondaryStatPanel" type="Panel" parent="OtherController/BattleController/StatPanelController" node_paths=PackedStringArray("background", "avatar", "name_label", "hp_label", "mp_label", "lvl_label")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nkjdf")
+script = ExtResource("20_nkjdf")
+ally_background = ExtResource("20_vawj3")
+enemy_background = ExtResource("23_mi322")
+background = NodePath("BackgroundFrame")
+avatar = NodePath("Avatar")
+name_label = NodePath("NameLabel")
+hp_label = NodePath("HPLabel")
+mp_label = NodePath("MPLabel")
+lvl_label = NodePath("LevelLabel")
+anchor_list = Array[ExtResource("7_lhmx0")]([SubResource("Resource_ui6mj"), SubResource("Resource_phnv0")])
+
+[node name="BackgroundFrame" type="NinePatchRect" parent="OtherController/BattleController/StatPanelController/SecondaryStatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(60, 25)
+texture = ExtResource("20_vawj3")
+region_rect = Rect2(0, 0, 50, 116)
+patch_margin_left = 3
+patch_margin_right = 47
+
+[node name="Avatar" type="TextureRect" parent="OtherController/BattleController/StatPanelController/SecondaryStatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -83.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_wd5du")
+expand_mode = 5
+
+[node name="NameLabel" type="Label" parent="OtherController/BattleController/StatPanelController/SecondaryStatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -50.0
+offset_bottom = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Name"
+label_settings = SubResource("LabelSettings_qvjbm")
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="OtherController/BattleController/StatPanelController/SecondaryStatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -34.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "HP: 888/888"
+label_settings = SubResource("LabelSettings_qvjbm")
+vertical_alignment = 1
+
+[node name="MPLabel" type="Label" parent="OtherController/BattleController/StatPanelController/SecondaryStatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "HP: 888/888"
+label_settings = SubResource("LabelSettings_qvjbm")
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="OtherController/BattleController/StatPanelController/SecondaryStatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "LVL: 99"
+label_settings = SubResource("LabelSettings_qvjbm")
+vertical_alignment = 1
+
+[node name="HitSuccessIndicator" type="CanvasLayer" parent="OtherController/BattleController" node_paths=PackedStringArray("panel", "hit_rate_label")]
+unique_name_in_owner = true
+script = ExtResource("37_mxuun")
+panel = NodePath("HitRatePanel")
+arrow = ExtResource("38_k6hj6")
+hit_rate_label = NodePath("HitRatePanel/HitRateLabel")
+
+[node name="HitRatePanel" type="Panel" parent="OtherController/BattleController/HitSuccessIndicator"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -12.0
+offset_right = 32.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k6hj6")
+script = ExtResource("39_mnl28")
+
+[node name="TextureRect" type="TextureRect" parent="OtherController/BattleController/HitSuccessIndicator/HitRatePanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HitRateLabel" type="Label" parent="OtherController/BattleController/HitSuccessIndicator/HitRatePanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "hit"
+
+[node name="TurnOrderController" type="CanvasLayer" parent="OtherController/BattleController" node_paths=PackedStringArray("turn_order_panel")]
+unique_name_in_owner = true
+script = ExtResource("29_xuk5g")
+turn_order_panel = NodePath("TurnOrderPanel")
+
+[node name="TurnOrderPanel" type="ScrollContainer" parent="OtherController/BattleController/TurnOrderController"]
+offset_right = 87.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yrcro")
+script = ExtResource("42_yrcro")
+anchor_list = Array[ExtResource("7_lhmx0")]([SubResource("Resource_yrcro"), SubResource("Resource_i4323")])
+
+[node name="OrderIndicator" type="VBoxContainer" parent="OtherController/BattleController/TurnOrderController/TurnOrderPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="BattleMessageController" type="CanvasLayer" parent="OtherController/BattleController" node_paths=PackedStringArray("label", "panel")]
+script = ExtResource("48_ggyex")
+label = NodePath("Panel/Label")
+panel = NodePath("Panel")
+
+[node name="Panel" type="Panel" parent="OtherController/BattleController/BattleMessageController"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.5
+offset_top = 13.0
+offset_right = 74.5
+offset_bottom = 53.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="OtherController/BattleController/BattleMessageController/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Ability"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AutoStatusController" type="Node" parent="OtherController/BattleController"]
+unique_name_in_owner = true
+script = ExtResource("45_e5as1")
+
+[node name="ComputerPlayer" type="Node" parent="OtherController/BattleController"]
+unique_name_in_owner = true
+script = ExtResource("49_wnhmo")
+metadata/_custom_type_script = "uid://dhkee25g4xwlv"
+
+[node name="Test" type="Node" parent="OtherController/BattleController"]
+unique_name_in_owner = true

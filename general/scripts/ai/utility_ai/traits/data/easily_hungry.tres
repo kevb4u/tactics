@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=5 format=3 uid="uid://4wy44wrc0df4"]
+
+[ext_resource type="Script" uid="uid://dqtyl84ahjueq" path="res://systems/utility_ai/traits/scripts/trait_element.gd" id="1_jvsw2"]
+[ext_resource type="Resource" uid="uid://dywe1hsmhw3xt" path="res://systems/utility_ai/stats_ai/data/hunger.tres" id="2_femit"]
+[ext_resource type="Script" uid="uid://do8yyiois2de4" path="res://systems/utility_ai/traits/scripts/trait.gd" id="2_ocqs1"]
+
+[sub_resource type="Resource" id="Resource_ps6t8"]
+script = ExtResource("1_jvsw2")
+linked_stat = ExtResource("2_femit")
+scoring_positive_scale = 1.1
+scoring_negative_scale = 1.5
+impact_positive_scale = 1.0
+impact_negative_scale = 1.0
+decay_rate_base = 1.5
+metadata/_custom_type_script = "uid://dqtyl84ahjueq"
+
+[resource]
+script = ExtResource("2_ocqs1")
+display_name = "Easily Hungry"
+impacts = Array[ExtResource("1_jvsw2")]([SubResource("Resource_ps6t8")])
+metadata/_custom_type_script = "uid://do8yyiois2de4"

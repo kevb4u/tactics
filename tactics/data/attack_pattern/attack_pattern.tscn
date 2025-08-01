@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://df0hwy2jkx21s"]
+
+[ext_resource type="Script" uid="uid://esmnligra6yl" path="res://tactics/scripts/ai/attack_pattern.gd" id="1_0dk42"]
+[ext_resource type="Script" uid="uid://crwky6em0sykr" path="res://tactics/scripts/ai/ability/fixed_ability_picker.gd" id="2_fovco"]
+[ext_resource type="Script" uid="uid://dv83jseu8jr5" path="res://tactics/scripts/ai/ability/random_ability_picker.gd" id="3_h5si8"]
+
+[node name="AttackPattern" type="Node"]
+script = ExtResource("1_0dk42")
+metadata/_custom_type_script = "uid://esmnligra6yl"
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("2_fovco")
+target = 3
+metadata/_custom_type_script = "uid://crwky6em0sykr"
+
+[node name="Cure" type="Node" parent="."]
+script = ExtResource("2_fovco")
+target = 1
+ability = "Cure"
+metadata/_custom_type_script = "uid://crwky6em0sykr"
+
+[node name="Attack or Cure" type="Node" parent="." node_paths=PackedStringArray("pickers")]
+script = ExtResource("3_h5si8")
+pickers = [NodePath("../Attack"), NodePath("../Cure"), NodePath(".")]
+metadata/_custom_type_script = "uid://dv83jseu8jr5"

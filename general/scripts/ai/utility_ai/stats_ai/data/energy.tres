@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AIStat" load_steps=2 format=3 uid="uid://cop1atou3mfei"]
+
+[ext_resource type="Script" uid="uid://dnqs6k5jp3qw3" path="res://general/scripts/ai/utility_ai/stats_ai/scripts/ai_stat.gd" id="1_shcol"]
+
+[resource]
+script = ExtResource("1_shcol")
+display_name = "Energy"
+priority = 3
+is_visible = true
+initial_value = 0.5
+decay_rate = 1.0
+metadata/_custom_type_script = "uid://dnqs6k5jp3qw3"

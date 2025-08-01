@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MemoryFragment" load_steps=5 format=3 uid="uid://b52k80tcvxf7g"]
+
+[ext_resource type="Script" uid="uid://d0uc7beiqgvsf" path="res://general/scripts/ai/utility_ai/memories/scripts/memory_fragment.gd" id="1_wgpcf"]
+[ext_resource type="Script" uid="uid://dop2jhjg3ioko" path="res://general/scripts/ai/utility_ai/smart_objects/scripts/interaction_stat_change.gd" id="3_0djx3"]
+[ext_resource type="Resource" uid="uid://dywe1hsmhw3xt" path="res://general/scripts/ai/utility_ai/stats_ai/data/hunger.tres" id="4_vnirc"]
+
+[sub_resource type="Resource" id="Resource_71ktj"]
+script = ExtResource("3_0djx3")
+linked_stat = ExtResource("4_vnirc")
+value = 0.8
+metadata/_custom_type_script = "uid://dop2jhjg3ioko"
+
+[resource]
+script = ExtResource("1_wgpcf")
+name = "Bad Color"
+description = "Saw Bad Color"
+duration = 60.0
+stat_changes = Array[ExtResource("3_0djx3")]([SubResource("Resource_71ktj")])
+memories_contered = Array[ExtResource("1_wgpcf")]([])
+metadata/_custom_type_script = "uid://d0uc7beiqgvsf"

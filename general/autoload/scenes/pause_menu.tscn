@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cetkmhctfs2u1"]
+
+[ext_resource type="Script" uid="uid://caqvvhpxmkrk0" path="res://general/autoload/scripts/pause_menu.gd" id="1_q25j2"]
+[ext_resource type="PackedScene" uid="uid://e8doi32vr4v2" path="res://tactics/scenes/tactics.tscn" id="2_oe6l1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q25j2"]
+bg_color = Color(0, 0, 0, 0.470588)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_q25j2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q25j2")
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+
+[node name="Label2" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 40.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+
+[node name="Tactics" parent="Control" instance=ExtResource("2_oe6l1")]
+position = Vector2(140, 75)

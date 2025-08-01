@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3qeqy8eqdfkj"]
+
+[ext_resource type="Script" uid="uid://bqi7t6tcutwx" path="res://general/scripts/ai/utility_ai/ai_user_interface/scripts/ai_stat_panel.gd" id="1_tdsja"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdsja"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqwx8"]
+bg_color = Color(0, 1, 0.119605, 1)
+
+[node name="AiStatPanel" type="ProgressBar"]
+custom_minimum_size = Vector2(0, 10)
+offset_right = 34.0
+offset_bottom = 17.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tdsja")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sqwx8")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+script = ExtResource("1_tdsja")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 38.0
+offset_bottom = 10.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "Hunger"
+horizontal_alignment = 1

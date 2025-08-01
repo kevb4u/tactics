@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ca18ad6qy5csr"
+
+[deps]
+
+files=["res://dialogue/translation/OutroSceneLose.en.translation", "res://dialogue/translation/OutroSceneLose.ja.translation", "res://dialogue/translation/OutroSceneLose.es.translation"]
+
+source_file="res://dialogue/translation/OutroSceneLose.csv"
+dest_files=["res://dialogue/translation/OutroSceneLose.en.translation", "res://dialogue/translation/OutroSceneLose.ja.translation", "res://dialogue/translation/OutroSceneLose.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

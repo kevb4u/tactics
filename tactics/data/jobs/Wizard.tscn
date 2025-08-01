@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlmvbpe2m264d"]
+
+[ext_resource type="Script" uid="uid://b6pea6p3vhi4x" path="res://tactics/scripts/stats/jobs/job.gd" id="1_sc00o"]
+[ext_resource type="Script" uid="uid://cf7pclqqw1ung" path="res://objects/items/scripts/stat_modifier_feature.gd" id="2_j4trq"]
+
+[node name="Job" type="Node"]
+script = ExtResource("1_sc00o")
+base_stats = Array[int]([30, 25, 11, 58, 61, 89, 98])
+grow_stats = Array[float]([6.6, 2.2, 1.1, 7.6, 8.8, 9.2, 0.8])
+
+[node name="SMF_MOV" type="Node" parent="."]
+script = ExtResource("2_j4trq")
+type = 15
+amount = 3
+
+[node name="SMF_JMP" type="Node" parent="."]
+script = ExtResource("2_j4trq")
+type = 16
+amount = 2
+
+[node name="SMF_EVD" type="Node" parent="."]
+script = ExtResource("2_j4trq")
+type = 12
+amount = 50
+
+[node name="SMF_RES" type="Node" parent="."]
+script = ExtResource("2_j4trq")
+type = 13
+amount = 50

@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkpdtw42kk713"]
+
+[ext_resource type="PackedScene" uid="uid://xnpa5jbxrgsb" path="res://objects/entity/scenes/entity.tscn" id="1_4wqev"]
+[ext_resource type="Script" uid="uid://dj7u5nv8jpl47" path="res://tactics/scripts/stats/stats.gd" id="3_aktke"]
+[ext_resource type="Resource" uid="uid://bwnj24hdmjpvp" path="res://dialogue/data/intro_scene.tres" id="3_xisxb"]
+[ext_resource type="PackedScene" uid="uid://dlmvbpe2m264d" path="res://tactics/data/jobs/Wizard.tscn" id="4_n0dmh"]
+[ext_resource type="Script" uid="uid://db5i1lr7rerp7" path="res://tactics/scripts/stats/rank.gd" id="5_n0dmh"]
+[ext_resource type="PackedScene" uid="uid://d22cvk43tqwl5" path="res://general/scenes/hurtbox.tscn" id="6_vdlqw"]
+
+[sub_resource type="GDScript" id="GDScript_vdlqw"]
+script/source = "class_name Player extends Entity
+
+@export var data: ConversationData
+@onready var stats: Stats = $Unit/Stats
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Global.game_controller.battle_controller.in_battle == false:
+		new_position = Vector2(Input.get_axis(\"left\", \"right\"), Input.get_axis(\"up\", \"down\") / 2.0) * 32
+		if event.is_action_pressed(\"right_click\") and new_position == Vector2.ZERO:
+			if navigation.is_finished():
+				animation_player.play(\"walk_down\")
+			
+			var tile_pos: Tile = Global.get_tile_mouse_postion()
+			var pos: Vector2
+			if tile_pos:
+				pos = Global.map_to_local(tile_pos.pos)
+			else:
+				pos = Global.get_mouse_position()
+			navigation.move(pos)
+			
+			Global.game_controller.current_2d_scene.pos = Global.local_to_map(Global.get_mouse_position())
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xisxb"]
+
+[node name="Player" instance=ExtResource("1_4wqev")]
+script = SubResource("GDScript_vdlqw")
+data = ExtResource("3_xisxb")
+
+[node name="Stats" type="Node" parent="Unit" index="1"]
+script = ExtResource("3_aktke")
+metadata/_custom_type_script = "uid://dj7u5nv8jpl47"
+
+[node name="Job" parent="Unit" index="2" instance=ExtResource("4_n0dmh")]
+
+[node name="Rank" type="Node" parent="Unit" index="3"]
+script = ExtResource("5_n0dmh")
+metadata/_custom_type_script = "uid://db5i1lr7rerp7"
+
+[node name="Hurtbox" parent="." index="4" instance=ExtResource("6_vdlqw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_xisxb")
+debug_color = Color(0.686338, 0.295488, 0.995172, 0.42)
+
+[node name="AttackPosition" parent="." index="5"]
+visible = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5b3i64tj6mut"]
+
+[ext_resource type="Script" uid="uid://bo8f6yvkbt0dl" path="res://general/scripts/ai/utility_ai/ai_user_interface/scripts/feedback_ui_panel.gd" id="1_mresr"]
+[ext_resource type="PackedScene" uid="uid://b3qeqy8eqdfkj" path="res://general/scripts/ai/utility_ai/ai_user_interface/ai_stat_panel.tscn" id="2_fhrhb"]
+
+[node name="FeedbackUiPanel" type="Node2D"]
+script = ExtResource("1_mresr")
+
+[node name="Control" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_right = 20.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AIStatContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="AiStatPanel" parent="Control/PanelContainer/AIStatContainer" instance=ExtResource("2_fhrhb")]
+layout_mode = 2

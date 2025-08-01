@@ -1,0 +1,735 @@
+[gd_scene load_steps=53 format=3 uid="uid://xnpa5jbxrgsb"]
+
+[ext_resource type="Script" uid="uid://5x5k4m0vlpo" path="res://objects/entity/scripts/entity.gd" id="1_8o3om"]
+[ext_resource type="Script" uid="uid://ot82oeyv76nn" path="res://tactics/scripts/movement/walk_movement.gd" id="3_7g61x"]
+[ext_resource type="Script" uid="uid://q6d1w0gk1d6h" path="res://tactics/scripts/ability/range/constant_ability_range.gd" id="3_7rb7u"]
+[ext_resource type="Texture2D" uid="uid://du6kaergc6bgo" path="res://objects/entity/sprites/mana_sprites/body/body_human_00.png" id="3_hp80x"]
+[ext_resource type="Script" uid="uid://bdn3nq6iwb2r2" path="res://tactics/scripts/ability/area_of_effect/unit_ability_area.gd" id="4_7rb7u"]
+[ext_resource type="Script" uid="uid://c5qimvig8pyaw" path="res://tactics/scripts/actor/unit.gd" id="4_hp80x"]
+[ext_resource type="Script" uid="uid://dyvyn2j4w17sx" path="res://tactics/scripts/ability/ability.gd" id="4_wvkyc"]
+[ext_resource type="Script" uid="uid://dqaoo3sgx1bni" path="res://tactics/scripts/ability/ability_catalog.gd" id="4_x8gc0"]
+[ext_resource type="Script" uid="uid://dbkaxw3t1tbyr" path="res://tactics/scripts/ability/effect_target/default_ability_effect_target.gd" id="5_xkftv"]
+[ext_resource type="Script" uid="uid://c4edkh8hcxkyc" path="res://objects/items/scripts/equipment.gd" id="6_ei1wu"]
+[ext_resource type="Script" uid="uid://x1icqilra8jb" path="res://tactics/scripts/ability/effect/damage_ability_effect.gd" id="6_mkato"]
+[ext_resource type="Script" uid="uid://btla3w3djef2e" path="res://tactics/scripts/ability/hit_rate/a_type_hit_rate.gd" id="6_ph05e"]
+[ext_resource type="Script" uid="uid://biwkknaxy3t54" path="res://tactics/scripts/ability/power/physical_ability_power.gd" id="7_iqvci"]
+[ext_resource type="Script" uid="uid://c36roc005s4of" path="res://tactics/scripts/status/status.gd" id="7_m0w1u"]
+[ext_resource type="Script" uid="uid://h667muafvjgj" path="res://general/scripts/sprite_sync.gd" id="7_xkftv"]
+[ext_resource type="Script" uid="uid://bx8yf5dwqjj6n" path="res://tactics/scripts/ability/power/magical_ability_power.gd" id="13_nd0ab"]
+[ext_resource type="Script" uid="uid://btjun0ilsieh3" path="res://tactics/scripts/ability/ability_magic_cost.gd" id="13_x8gc0"]
+[ext_resource type="Script" uid="uid://bvjs4y0tmndox" path="res://tactics/scripts/ability/hit_rate/full_type_hit_rate.gd" id="14_exgq6"]
+[ext_resource type="Script" uid="uid://dj7u5nv8jpl47" path="res://tactics/scripts/stats/stats.gd" id="14_i3bdo"]
+[ext_resource type="Script" uid="uid://int2qfskma4b" path="res://tactics/scripts/ability/effect/heal_ability_effect.gd" id="14_nd0ab"]
+[ext_resource type="Script" uid="uid://dm2ev3dr2qdbh" path="res://tactics/scripts/ability/effect_target/ko_ability_effect_target.gd" id="16_3ia7k"]
+[ext_resource type="Script" uid="uid://b27dgjf21av46" path="res://tactics/scripts/ability/effect/absorb_damage_ability_effect.gd" id="16_exgq6"]
+[ext_resource type="Script" uid="uid://befs3xcsdmxs6" path="res://tactics/scripts/ability/effect/revive_ability_effect.gd" id="17_c4lsa"]
+[ext_resource type="Script" uid="uid://tycjs8ho8aem" path="res://tactics/scripts/ability/area_of_effect/full_ability_area.gd" id="19_0jgdx"]
+[ext_resource type="Script" uid="uid://ycn8ut31gol" path="res://tactics/scripts/ability/effect/inflict_ability_effect.gd" id="19_ci0ui"]
+[ext_resource type="Script" uid="uid://barw6su0og0vk" path="res://tactics/scripts/ability/hit_rate/s_type_hit_rate.gd" id="20_fuhlf"]
+[ext_resource type="Script" uid="uid://c174cc2e4cuw5" path="res://tactics/scripts/ability/effect_target/except_self_ability_effect_target.gd" id="20_oix5b"]
+[ext_resource type="Script" uid="uid://bjq7uxxc4ypw5" path="res://tactics/scripts/status/effects/poison_status_effect.gd" id="21_fuhlf"]
+[ext_resource type="Script" uid="uid://bmrehdh5wqrwi" path="res://tactics/scripts/status/effects/blind_status_effect.gd" id="22_udosv"]
+[ext_resource type="Script" uid="uid://ckxvt4qiscdtx" path="res://tactics/scripts/ability/area_of_effect/specify_ability_area.gd" id="23_xmucn"]
+[ext_resource type="Script" uid="uid://cljkol4bseg1k" path="res://tactics/scripts/ability/area_of_effect/line_ability_area.gd" id="24_uj554"]
+[ext_resource type="Script" uid="uid://b44tx1xg7lomk" path="res://tactics/scripts/status/effects/slow_status_effect.gd" id="26_jxfqx"]
+[ext_resource type="Script" uid="uid://2m12y5y34d7x" path="res://tactics/scripts/actor/alliance.gd" id="27_5ilek"]
+[ext_resource type="Script" uid="uid://d01ldu2tn73kr" path="res://tactics/scripts/status/effects/haste_status_effect.gd" id="27_qb12p"]
+[ext_resource type="Script" uid="uid://cw2boua5lo1x1" path="res://objects/items/scripts/inventory.gd" id="28_cju64"]
+[ext_resource type="Script" uid="uid://l40pbjif7kka" path="res://tactics/scripts/ability/effect_target/all_ability_effect_target.gd" id="28_rxln1"]
+[ext_resource type="Script" uid="uid://vj16y2ax6bvo" path="res://tactics/scripts/ability/effect/tile_inflict_ability_effect.gd" id="29_dfaa5"]
+[ext_resource type="Script" uid="uid://dhehnq68kimi4" path="res://tactics/scripts/status/effects/tile/snow_tile_status_effect.gd" id="30_dfaa5"]
+[ext_resource type="Script" uid="uid://bykg0xtjedbc0" path="res://tactics/scripts/ability/hit_rate/tile_hit_rate.gd" id="31_m4b6i"]
+[ext_resource type="Script" uid="uid://pogroyy5bpv0" path="res://objects/items/scripts/item.gd" id="32_0jgdx"]
+[ext_resource type="Script" uid="uid://ckxqpsnt0fhen" path="res://tactics/scripts/status/effects/tile/fire_tile_status_effect.gd" id="32_yjaww"]
+[ext_resource type="Script" uid="uid://baadof4b04alf" path="res://objects/items/scripts/item_resource.gd" id="33_cj2xv"]
+[ext_resource type="Script" uid="uid://diyciob1dhr5c" path="res://tactics/scripts/status/effects/tile/earth_tile_status_effect.gd" id="33_tewue"]
+[ext_resource type="Script" uid="uid://dwumided5h5yo" path="res://tactics/scripts/status/effects/tile/grass_tile_status_effect.gd" id="34_tewue"]
+[ext_resource type="PackedScene" uid="uid://bkx6cqwsav4u4" path="res://tactics/data/jobs/Warrior.tscn" id="37_tewue"]
+
+[sub_resource type="Resource" id="Resource_7m4ki"]
+script = ExtResource("33_cj2xv")
+type = 1
+stat = 3
+amount = 500
+metadata/_custom_type_script = "uid://baadof4b04alf"
+
+[sub_resource type="Animation" id="Animation_ei1wu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7g61x"]
+resource_name = "idle_east"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d02ty"]
+resource_name = "idle_north"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m0w1u"]
+resource_name = "idle_south"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i3bdo"]
+resource_name = "idle_west"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0w1u"]
+_data = {
+&"RESET": SubResource("Animation_ei1wu"),
+&"idle_east": SubResource("Animation_7g61x"),
+&"idle_north": SubResource("Animation_d02ty"),
+&"idle_south": SubResource("Animation_m0w1u"),
+&"idle_west": SubResource("Animation_i3bdo")
+}
+
+[node name="Entity" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_8o3om")
+
+[node name="Unit" type="Node" parent="."]
+script = ExtResource("4_hp80x")
+
+[node name="Movement" type="Node" parent="Unit"]
+script = ExtResource("3_7g61x")
+
+[node name="Attack" type="Node" parent="Unit"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/Attack"]
+script = ExtResource("3_7rb7u")
+
+[node name="AbilityArea" type="Node" parent="Unit/Attack"]
+script = ExtResource("4_7rb7u")
+
+[node name="AbilityPower" type="Node" parent="Unit/Attack"]
+script = ExtResource("7_iqvci")
+level = 100
+
+[node name="Damage" type="Node" parent="Unit/Attack"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/Attack/Damage"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/Attack/Damage"]
+script = ExtResource("6_mkato")
+
+[node name="HitRate" type="Node" parent="Unit/Attack/Damage"]
+script = ExtResource("6_ph05e")
+
+[node name="AbilityCatalog" type="Node" parent="Unit"]
+script = ExtResource("4_x8gc0")
+
+[node name="WhiteMagic" type="Node" parent="Unit/AbilityCatalog"]
+
+[node name="Cure" type="Node" parent="Unit/AbilityCatalog/WhiteMagic"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure"]
+script = ExtResource("13_x8gc0")
+amount = 4
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure"]
+script = ExtResource("13_nd0ab")
+level = 40
+
+[node name="Heal" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure/Heal"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure/Heal"]
+script = ExtResource("14_nd0ab")
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Cure/Heal"]
+script = ExtResource("14_exgq6")
+
+[node name="Revive" type="Node" parent="Unit/AbilityCatalog/WhiteMagic"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive"]
+script = ExtResource("13_x8gc0")
+amount = 5
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive"]
+script = ExtResource("13_nd0ab")
+
+[node name="Heal" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive/Heal"]
+script = ExtResource("16_3ia7k")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive/Heal"]
+script = ExtResource("17_c4lsa")
+percent = 0.5
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/WhiteMagic/Revive/Heal"]
+script = ExtResource("14_exgq6")
+
+[node name="Vampire" type="Node" parent="Unit/AbilityCatalog"]
+
+[node name="Drain" type="Node" parent="Unit/AbilityCatalog/Vampire"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain"]
+script = ExtResource("3_7rb7u")
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain"]
+script = ExtResource("13_x8gc0")
+amount = 7
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain"]
+script = ExtResource("13_nd0ab")
+level = 100
+
+[node name="Damage" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain/Damage"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain/Damage"]
+script = ExtResource("6_mkato")
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain/Damage"]
+script = ExtResource("6_ph05e")
+
+[node name="Drain" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain/Drain"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain/Drain" node_paths=PackedStringArray("effect")]
+script = ExtResource("16_exgq6")
+effect = NodePath("../../Damage/AbilityEffect")
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Vampire/Drain/Drain"]
+script = ExtResource("14_exgq6")
+
+[node name="Blood Burst" type="Node" parent="Unit/AbilityCatalog/Vampire"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst"]
+script = ExtResource("3_7rb7u")
+horizontal = 3
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst"]
+script = ExtResource("19_0jgdx")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst"]
+script = ExtResource("13_x8gc0")
+amount = 7
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst"]
+script = ExtResource("13_nd0ab")
+level = 100
+
+[node name="Damage" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst/Damage"]
+script = ExtResource("20_oix5b")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst/Damage"]
+script = ExtResource("6_mkato")
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Vampire/Blood Burst/Damage"]
+script = ExtResource("6_ph05e")
+
+[node name="Ranger" type="Node" parent="Unit/AbilityCatalog"]
+
+[node name="Poison Dart" type="Node" parent="Unit/AbilityCatalog/Ranger"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart"]
+script = ExtResource("3_7rb7u")
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart"]
+script = ExtResource("7_iqvci")
+
+[node name="Poison" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart/Poison"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart/Poison"]
+script = ExtResource("19_ci0ui")
+status_script = ExtResource("21_fuhlf")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Ranger/Poison Dart/Poison"]
+script = ExtResource("20_fuhlf")
+
+[node name="Blinding Dart" type="Node" parent="Unit/AbilityCatalog/Ranger"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart"]
+script = ExtResource("3_7rb7u")
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart"]
+script = ExtResource("7_iqvci")
+
+[node name="Blind" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart/Blind"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart/Blind"]
+script = ExtResource("19_ci0ui")
+status_script = ExtResource("22_udosv")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Ranger/Blinding Dart/Blind"]
+script = ExtResource("20_fuhlf")
+
+[node name="Volley" type="Node" parent="Unit/AbilityCatalog/Ranger"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley"]
+script = ExtResource("23_xmucn")
+horizontal = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley"]
+script = ExtResource("7_iqvci")
+level = 100
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley"]
+script = ExtResource("13_x8gc0")
+amount = 2
+
+[node name="Damage" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley/Damage"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley/Damage"]
+script = ExtResource("6_mkato")
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Ranger/Volley/Damage"]
+script = ExtResource("6_ph05e")
+
+[node name="Power Draw" type="Node" parent="Unit/AbilityCatalog/Ranger"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw"]
+script = ExtResource("24_uj554")
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw"]
+script = ExtResource("7_iqvci")
+level = 100
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw"]
+script = ExtResource("13_x8gc0")
+amount = 2
+
+[node name="Damage" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw/Damage"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw/Damage"]
+script = ExtResource("6_mkato")
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Ranger/Power Draw/Damage"]
+script = ExtResource("6_ph05e")
+
+[node name="TimeLord" type="Node" parent="Unit/AbilityCatalog"]
+
+[node name="Slow" type="Node" parent="Unit/AbilityCatalog/TimeLord"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow"]
+script = ExtResource("7_iqvci")
+
+[node name="Slow" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow/Slow"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow/Slow"]
+script = ExtResource("19_ci0ui")
+status_script = ExtResource("26_jxfqx")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/TimeLord/Slow/Slow"]
+script = ExtResource("20_fuhlf")
+
+[node name="Haste" type="Node" parent="Unit/AbilityCatalog/TimeLord"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste"]
+script = ExtResource("4_7rb7u")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste"]
+script = ExtResource("7_iqvci")
+
+[node name="Haste" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste/Haste"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste/Haste"]
+script = ExtResource("19_ci0ui")
+status_script = ExtResource("27_qb12p")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/TimeLord/Haste/Haste"]
+script = ExtResource("20_fuhlf")
+
+[node name="Terrain" type="Node" parent="Unit/AbilityCatalog"]
+
+[node name="Snow Terrain" type="Node" parent="Unit/AbilityCatalog/Terrain"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain"]
+script = ExtResource("23_xmucn")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain"]
+script = ExtResource("7_iqvci")
+
+[node name="Snow" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain/Snow"]
+script = ExtResource("28_rxln1")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain/Snow"]
+script = ExtResource("29_dfaa5")
+status_script = ExtResource("30_dfaa5")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Terrain/Snow Terrain/Snow"]
+script = ExtResource("31_m4b6i")
+
+[node name="Fire Terrain" type="Node" parent="Unit/AbilityCatalog/Terrain"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain"]
+script = ExtResource("23_xmucn")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain"]
+script = ExtResource("7_iqvci")
+
+[node name="Fire" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain/Fire"]
+script = ExtResource("28_rxln1")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain/Fire"]
+script = ExtResource("29_dfaa5")
+status_script = ExtResource("32_yjaww")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Terrain/Fire Terrain/Fire"]
+script = ExtResource("31_m4b6i")
+
+[node name="Earth Wall" type="Node" parent="Unit/AbilityCatalog/Terrain"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall"]
+script = ExtResource("23_xmucn")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall"]
+script = ExtResource("7_iqvci")
+
+[node name="Earth" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall/Earth"]
+script = ExtResource("28_rxln1")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall/Earth"]
+script = ExtResource("29_dfaa5")
+status_script = ExtResource("33_tewue")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Terrain/Earth Wall/Earth"]
+script = ExtResource("31_m4b6i")
+
+[node name="Grass Terrain" type="Node" parent="Unit/AbilityCatalog/Terrain"]
+script = ExtResource("4_wvkyc")
+
+[node name="AbilityRange" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain"]
+script = ExtResource("23_xmucn")
+
+[node name="ManaCost" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain"]
+script = ExtResource("13_x8gc0")
+amount = 1
+
+[node name="AbilityPower" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain"]
+script = ExtResource("7_iqvci")
+
+[node name="Grass" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain/Grass"]
+script = ExtResource("28_rxln1")
+
+[node name="AbilityEffect" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain/Grass"]
+script = ExtResource("29_dfaa5")
+status_script = ExtResource("34_tewue")
+duration = 3
+
+[node name="HitRate" type="Node" parent="Unit/AbilityCatalog/Terrain/Grass Terrain/Grass"]
+script = ExtResource("31_m4b6i")
+
+[node name="Status" type="Node" parent="Unit"]
+script = ExtResource("7_m0w1u")
+
+[node name="Stats" type="Node" parent="Unit"]
+script = ExtResource("14_i3bdo")
+metadata/_custom_type_script = "uid://dj7u5nv8jpl47"
+
+[node name="Job" parent="Unit" instance=ExtResource("37_tewue")]
+
+[node name="Allliance" type="Node" parent="Unit"]
+script = ExtResource("27_5ilek")
+
+[node name="Equipment" type="Node" parent="Unit"]
+script = ExtResource("6_ei1wu")
+
+[node name="Inventory" type="Node" parent="Unit"]
+script = ExtResource("28_cju64")
+
+[node name="Item" type="Node" parent="Unit/Inventory"]
+script = ExtResource("32_0jgdx")
+item_resource = SubResource("Resource_7m4ki")
+metadata/_custom_type_script = "uid://pogroyy5bpv0"
+
+[node name="AbilityRange" type="Node" parent="Unit/Inventory/Item"]
+script = ExtResource("3_7rb7u")
+horizontal = 4
+
+[node name="AbilityArea" type="Node" parent="Unit/Inventory/Item"]
+script = ExtResource("4_7rb7u")
+
+[node name="AbilityPower" type="Node" parent="Unit/Inventory/Item"]
+script = ExtResource("13_nd0ab")
+level = 40
+
+[node name="Heal" type="Node" parent="Unit/Inventory/Item"]
+
+[node name="AbilityEffectTarget" type="Node" parent="Unit/Inventory/Item/Heal"]
+script = ExtResource("5_xkftv")
+
+[node name="AbilityEffect" type="Node" parent="Unit/Inventory/Item/Heal"]
+script = ExtResource("14_nd0ab")
+
+[node name="HitRate" type="Node" parent="Unit/Inventory/Item/Heal"]
+script = ExtResource("14_exgq6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("3_hp80x")
+offset = Vector2(0, -11)
+hframes = 16
+vframes = 16
+script = ExtResource("7_xkftv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_m0w1u")
+}
+
+[node name="Events" type="Node2D" parent="."]

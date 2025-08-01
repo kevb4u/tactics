@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c6cd2q37xi8u2"
+
+[deps]
+
+files=["res://dialogue/translation/IntroScene.en.translation", "res://dialogue/translation/IntroScene.ja.translation", "res://dialogue/translation/IntroScene.es.translation"]
+
+source_file="res://dialogue/translation/IntroScene.csv"
+dest_files=["res://dialogue/translation/IntroScene.en.translation", "res://dialogue/translation/IntroScene.ja.translation", "res://dialogue/translation/IntroScene.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

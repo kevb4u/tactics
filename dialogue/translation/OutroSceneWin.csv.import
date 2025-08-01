@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cgap3nymfphnm"
+
+[deps]
+
+files=["res://dialogue/translation/OutroSceneWin.en.translation", "res://dialogue/translation/OutroSceneWin.ja.translation", "res://dialogue/translation/OutroSceneWin.es.translation"]
+
+source_file="res://dialogue/translation/OutroSceneWin.csv"
+dest_files=["res://dialogue/translation/OutroSceneWin.en.translation", "res://dialogue/translation/OutroSceneWin.ja.translation", "res://dialogue/translation/OutroSceneWin.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=4 uid="uid://e8doi32vr4v2"]
+
+[ext_resource type="Script" uid="uid://0bnx8m40q7u7" path="res://tactics/scripts/tactics.gd" id="1_n3vx7"]
+[ext_resource type="Script" uid="uid://bwl24kbn7e62d" path="res://world/scripts/isometric_tile_map_sort.gd" id="1_t82nr"]
+[ext_resource type="PackedScene" uid="uid://bdc14r3jn4ya3" path="res://world/scenes/tile_map/isometric_tile_map.tscn" id="2_a3pgw"]
+[ext_resource type="Texture2D" uid="uid://cr51673g70ore" path="res://tactics/sprites/MoreConversationArrow.png" id="5_u8hpn"]
+[ext_resource type="Script" uid="uid://bh10l38eo8hww" path="res://general/scripts/state_machine/state_machine.gd" id="6_u8hpn"]
+[ext_resource type="Script" uid="uid://cd8v11j6555hw" path="res://tactics/scripts/states/tactics/init_tactics_state.gd" id="7_rdf3w"]
+[ext_resource type="Texture2D" uid="uid://du6kaergc6bgo" path="res://objects/entity/sprites/mana_sprites/body/body_human_00.png" id="7_y73aw"]
+
+[node name="Tactics" type="Node2D" node_paths=PackedStringArray("init_state", "floor_tile_map", "marker")]
+script = ExtResource("1_n3vx7")
+init_state = NodePath("StateMachine/InitTacticsState")
+floor_tile_map = NodePath("IsometricTileMapSort/IsometricTileMap")
+marker = NodePath("Marker")
+
+[node name="IsometricTileMapSort" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("1_t82nr")
+
+[node name="IsometricTileMap" parent="IsometricTileMapSort" instance=ExtResource("2_a3pgw")]
+z_index = -1
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAMAAAD//wEAAAAAAAMAAAAAAAAAAAAAAAMAAAAAAAEAAAAAAAMAAAABAAAAAAAAAAMAAAABAAEAAAAAAAMAAAAAAAIAAAAAAAMAAAABAAIAAAAAAAMAAAD//wIAAAAAAAMAAAD8//7/AAAAAAMAAAD8////AAAAAAMAAAD8/wAAAAAAAAMAAAD8/wEAAAAAAAMAAAD8/wIAAAAAAAMAAAD8/wMAAAAAAAMAAAD9//7/AAAAAAMAAAD9////AAAAAAMAAAD9/wMAAAAAAAMAAAD+//7/AAAAAAMAAAD+////AAAAAAMAAAD+/wMAAAAAAAMAAAD///7/AAAAAAMAAAD/////AAAAAAMAAAD//wMAAAAAAAMAAAAAAP7/AAAAAAMAAAAAAP//AAAAAAMAAAAAAAMAAAAAAAMAAAABAP7/AAAAAAMAAAABAP//AAAAAAMAAAABAAMAAAAAAAMAAAACAP7/AAAAAAMAAAACAP//AAAAAAMAAAACAAAAAAAAAAMAAAACAAEAAAAAAAMAAAACAAIAAAAAAAMAAAACAAMAAAAAAAMAAAAEAP7/AAAAAAMAAAAEAP//AAAAAAMAAAAEAAAAAAAAAAMAAAAEAAEAAAAAAAMAAAAEAAIAAAAAAAMAAAAEAAMAAAAAAAMAAAAFAP7/AAAAAAMAAAAFAP//AAAAAAMAAAAFAAAAAAAAAAMAAAAFAAEAAAAAAAMAAAAFAAIAAAAAAAMAAAAFAAMAAAAAAAMAAAADAP7/AAAAAAMAAAADAP//AAAAAAMAAAADAAAAAAAAAAMAAAADAAEAAAAAAAMAAAADAAIAAAAAAAMAAAADAAMAAAAAAAMAAAD9/wAAAAAAAAMAAAD9/wEAAAAAAAMAAAD9/wIAAAAAAAMAAAD+/wAAAAAAAAMAAAD+/wEAAAAAAAMAAAD+/wIAAAAAAAMAAAD8//3/AAAAAAMAAAD9//3/AAAAAAMAAAD+//3/AAAAAAMAAAD///3/AAAAAAMAAAAAAP3/AAAAAAMAAAABAP3/AAAAAAMAAAACAP3/AAAAAAMAAAADAP3/AAAAAAMAAAAEAP3/AAAAAAMAAAAFAP3/AAAAAAMAAAA=")
+
+[node name="IsometricTileMap2" parent="IsometricTileMapSort" instance=ExtResource("2_a3pgw")]
+collision_enabled = false
+
+[node name="Marker" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker"]
+y_sort_enabled = true
+texture = ExtResource("5_u8hpn")
+offset = Vector2(0, -12)
+
+[node name="StateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_u8hpn")
+metadata/_custom_type_script = "uid://bh10l38eo8hww"
+
+[node name="InitTacticsState" type="Node" parent="StateMachine"]
+script = ExtResource("7_rdf3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-32, -15)
+texture = ExtResource("7_y73aw")
+offset = Vector2(0, -11)
+hframes = 16
+vframes = 16
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(33, 16)
+texture = ExtResource("7_y73aw")
+offset = Vector2(0, -11)
+hframes = 16
+vframes = 16
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(65, 17)
+texture = ExtResource("7_y73aw")
+offset = Vector2(0, -11)
+hframes = 16
+vframes = 16
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(65, 34)
+texture = ExtResource("7_y73aw")
+offset = Vector2(0, -11)
+hframes = 16
+vframes = 16
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(33, 34)
+texture = ExtResource("7_y73aw")
+offset = Vector2(0, -11)
+hframes = 16
+vframes = 16
